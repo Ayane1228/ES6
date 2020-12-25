@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 创建父类
+        class Father{
+            money(){
+                console.log(100)
+            }
+        }
+        // 创建子类继承父类，只能继承父类的普通方法
+        class Son extends Father{
+
+        }
+        // 子类创建实例对象
+        var son = new Son()
+        // 子类对象调用父类的方法
+        son.money()
+
+        class Newfather{
+            constructor(x,y){
+                this.x = x
+                this.y = y
+            }
+            sum(){
+                console.log(this.x + this.y)
+            }
+        }
+        class Newson extends Newfather{
+            constructor(x,y){
+                // 只有super才可以调用父类中的构造函数
+                super(x,y)
+            }
+        }
+        // 调用子类的构造函数
+        var newson = new Newson(1,2)
+        newson.sum() 
+    </script>
+</body>
+</html>

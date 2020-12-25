@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*创建一个类，
+        *（1）类里面不需要写function
+        *（2）多个函数之间加 ,
+        */
+        class Star{
+            // 构造函数,接受传递过来的参数，同时返回实例对象
+            constructor(uname,age){
+                // this指向创建的实例，所以ldh对象就会有uname这个属性
+                this.uname=uname;
+                this.age=age
+            }
+            // 给类创建共有方法,并接受参数 song
+            sing(song){
+                console.log(this.uname +':'+song)
+            }
+        }
+        // 利用类创建一个实例对象：ldh（new不能省略）,new生成实例就会自动调用constructor(),将'刘德华'实参赋给uname形参
+        var ldh = new Star('刘德华',18);
+        var zxy = new Star('张学友',22);
+        console.log(ldh.uname);
+        console.log(zxy);
+        // 使用方法
+        ldh.sing('冰雨');
+        zxy.sing('zxy');
+    </script>
+</body>
+</html>

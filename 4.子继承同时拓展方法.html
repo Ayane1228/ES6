@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 父类
+        class Father{
+            // 父类构造函数
+            constructor(x,y){
+                this.x=x
+                this.y=y
+            }
+            sum(x,y){
+                console.log(this.x+this.y)
+            }
+        }
+        // 子类
+        class Son extends Father{
+            // 子类构造函数
+            constructor(x,y){
+                // 父类的this指向父类constructor创建的实例，因此用super调用父类的构造函数而且super必须在子类this之前调用
+                super(x,y)
+                // 子类的this指向子类constructor创建的实例
+                this.x=x
+                this.y=y
+            }
+            sub(x,y){
+                console.log(this.x-this.y)
+            }
+        }
+        
+        // 实例化类
+        var son = new Son(1,2)
+        // 调用子类方法
+        son.sub() //-1
+        son.sum() //3
+        
+        // 注意：类没有变量提升 必须先定义类才能通过类实例化对象
+        // 类里面共有的属性和方法必须加this才能使用：
+        // 因为属性和方法使用本质上是使用实例化对象中的属性和方法，this指向的就是实力对象的属性和方法
+    </script> 
+</body>
+</html>

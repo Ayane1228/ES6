@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮</button>
+    <script>
+        var that
+        // constructor指向实例对象
+        // 方法里的this指向方法的调用者
+        class Father{
+            // 父类构造函数
+            constructor(uname,age){
+                // constructor中的this指向的是：创建的对象5.this指向问题.html:17 Father {}
+                console.log(this)
+                that = this
+                
+                this.uname = uname
+                this.age = age
+
+                this.btn = document.querySelector('button')
+                this.btn.onclick = this.sign
+            }
+            sign(){
+                // 指向调用者btn
+                console.log(this) //<button>按钮</button>
+                console.log(this.uname) //undefined 应为btn中没有uname属性
+                console.log(that.uname) //刘德华
+            }
+            dance(){
+                console.log('dance'+this.age) //dance18
+                console.log(this) //实例化对象ldh：Father {uname: "刘德华", age: 18, btn: button}
+            }
+        }
+        var ldh = new Father('刘德华',18);
+        console.log(that == ldh) //true
+        ldh.dance()
+    </script> 
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 父类
+        class Father{
+            sayFather(){
+                return('我是父类中的普通方法')
+            }
+        }
+        // 子类
+        class Son extends Father{
+            saySon(){
+                console.log('我是子类中的方法')
+            }
+            say(){
+                // super.function() 就是调用父类的普通函数
+                console.log(super.sayFather() + ',子类使用父类的普通方法')
+            }
+        }
+        // 实例化类
+        var son = new Son
+        son.saySon() //我是子类中的方法
+        son.say() //我是父类中的普通方法,子类使用父类的普通方法
+    // 继承中查找方法或属性的原则：就近原则
+    // 如果子类有则执行子类的方法或属性，没有就去查找父类中是否有对应的方法或属性
+    </script>
+    
+</body>
+</html>

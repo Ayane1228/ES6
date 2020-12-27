@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 原型是一个对象，是每个构造函数中都存在的对象
+        // 原型作用：共享公用的方法，节约内存空间
+        // 一般情况下，公共属性定义到构造函数中
+        // 公共方法则定义到原型对象上
+
+        // 构造函数原型 prototype 构造函数通过原型分配的函数是所有对象共享的
+        // 每个构造函数都有一个prototype属性,指向一个对象
+        // 我们可以把不变的方法，直接定义到prototype对象上，这样所有对象的实例就可以共享这些方法
+        function Star(uname,age){
+        this.uname = uname
+        this.age = age
+        this.sign = function(){
+            console.log('我会唱歌')
+            }            
+        }
+        // 给构造函数的原型对象添加方法
+        Star.prototype.method = function(){
+            console.log('我是原型对象中的方法');
+        }
+        // 实例化对象
+        var ldh = new Star('刘德华',18)
+        var zxy = new Star('张三',24)
+        console.log(ldh.sign() == zxy.sign()) //我会唱歌,我会唱歌,true 两个函数的执行结果相同
+        console.log(ldh.sign == zxy.sign) //flase，不同的地址 => false 
+        // console.dir()可以显示一个对象的所有属性和方法 
+        console.dir(Star)
+        // 调用原型对象中的方法
+        ldh.method() //我是原型对象中的方法
+        zxy.method() //我是原型对象中的方法
+        console.log(ldh.method == zxy.method); //true
+    </script>
+</body>
+</html>

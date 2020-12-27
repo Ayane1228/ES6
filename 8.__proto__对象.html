@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Star(uname,age){
+        this.uname = uname
+        this.age = age
+        this.sign = function(){
+            console.log('我会唱歌')
+            }            
+        }
+        // 给构造函数的原型对象添加方法
+        Star.prototype.method = function(){
+            console.log('我是原型对象中的方法');
+        }
+        // 实例化对象
+        var ldh = new Star('刘德华',18)
+        var zxy = new Star('张三',24)
+        // 为什么实例化对象可以访问构造函数的prototype？
+        // 因为实例化对象有一个属性__proto__原型链，指向构造函数的prototype对象
+        console.log(ldh.__proto__); //Object
+        console.log(ldh.__proto__ === Star.prototype);  //true
+        /* 
+        * 实例化对象的方法查找规则
+        * 查找实例化对象上的方法
+        * 通过__proto__查找构造函数上的原型中的方法
+        */
+    </script>
+</body>
+</html>

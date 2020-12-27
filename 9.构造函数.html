@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function Star(uname,age){
+        this.uname = uname
+        this.age = age
+        this.sign = function(){
+            console.log('我会唱歌')
+            }            
+        }
+        // 给构造函数的原型对象添加方法
+        Star.prototype.method = function(){
+            console.log('我是原型对象中的方法');
+        }
+        // 实例化对象
+        var ldh = new Star('刘德华',18)
+        var zxy = new Star('张三',24)
+    // __proto__和prototype都有一个constructor属性，我们称为构造函数，因为它指向构造函数本身，可以记录对象引用了那个构造函数
+    console.log(Star.prototype.constructor);
+    console.log(ldh.__proto__.constructor)
+    </script>
+</body>
+</html>

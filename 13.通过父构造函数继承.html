@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 父构造函数 this指向父构造函数的对象实例
+        function Father(uname,age){
+            this.uname = uname
+            this.age = age
+        }
+        // 父原型的共有方法
+        Father.prototype.money = function(){ 
+            console.log(100000);
+        }
+        // 子构造函数 this指向子构造函数的对象实例 通过用call调用父构造函数
+        function Son(uname,age,score){
+            // this指向子构造函数的实例对象，将父构造函数中的this改成子构造函数中的this
+            Father.call(this,uname,age)
+            this.score = score
+        }
+        // 继承父构造函数中的原型方法
+        // 创建Father实例对象，并赋值给Son的原型，再通过Father的实例对象的__proto__访问Father的原型
+        //  Son.prototype => new Father() => new Father().__proto__ => Father.prototype
+        Son.prototype = new Father()
+        // 利用原型对象修改了原型对象，要利用constructor指回原来的原型的构造函数
+        Son.prototype.constructor = Son.constructor
+        // 如果不加 Son.prototype.constructor就是指的是Father.constructor（Son.prototype = new Father()）
+        var son = new Son('zs',20,1000)
+        console.log(son); 
+        // Son {uname: "zs", age: 20, score: 1000}
+        // age: 20
+        // score: 1000
+        // uname: "zs"
+        // __proto__: Father
+        // age: undefined
+        // uname: undefined
+        // __proto__:
+        //* money: ƒ () 
+        // constructor: ƒ Father(uname,age)
+        // __proto__: Object
+    </script>
+</body>
+</html>

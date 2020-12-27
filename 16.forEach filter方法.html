@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [12,55,64,18,12,33,45]
+        // arr可以省略
+        // forEach() 循环遍历语法：
+        // 语法： array.forEach(function(currentValue,index,arr){}) 数组当前项的值 当前项的索引 arr：数组本身
+        // filter() 筛选数组，会返回一个新数组 
+        // 语法：arr.filter(function(currentValue,index,arr){return value条件})
+        // some() 查找数组中是否有满足条件的数组元素 返回值时布尔值
+        // 语法 arr.some(function(value,index,arr){return 条件})
+        // 只要找到一个满足的条件就不再循环
+        arr.forEach(function(value,index){
+            console.log('每个值为'+value);
+            console.log('每个元素的缩影'+index);
+            /*
+            每个值为12
+            每个元素的缩影0
+            每个值为55
+            每个元素的缩影1
+            每个值为64
+            每个元素的缩影2
+            每个值为18
+            每个元素的缩影3
+            每个值为12
+            每个元素的缩影4
+            每个值为33
+            每个元素的缩影5
+            每个值为45
+            */
+        })
+        var newArr = arr.filter(function(value,index){
+            return value%2 === 0
+        })
+        console.log(newArr)
+        // Array(4)
+            // 0: 12
+            // 1: 64
+            // 2: 18
+            // 3: 12
+            // length: 4
+        var flag = arr.some(function(value,index){
+            return value ===18
+        })
+        console.log(flag); //true
+    </script>
+</body>
+</html>

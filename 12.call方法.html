@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // call() 可以修改函数运行时的this的指向
+        // fun.call(thisArg,arg1....)
+        // thisArg:当前调用函数的this的指向到底是谁
+        function fn(){
+            console.log('我是fn（）');
+            console.log(this); //window
+        }
+        var o ={
+            name:'andy'
+        }
+        fn.call() //我是fn（）
+        // call可以调用函数
+        // 改变this指向
+        fn.call(o) //Object o
+    </script>
+</body>
+</html>

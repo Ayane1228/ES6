@@ -67,21 +67,43 @@
         }, ];
         // 渲染页面
         var tbody = document.querySelector('tbody');
-        data.forEach(function(value){
-            var tr = document.createElement('tr')
-            tr.innerHTML='<td>'+value.id+'</td><td>'+value.pname+'</td><td>'+value.price+'</td>'
-            tbody.appendChild(tr)
-        })
-        // 查询
-        // 根据价格查询
         var start = document.querySelector('.start')
         var end = document.querySelector('.end')
         var search_price = document.querySelector('.search-price')
+        var search_pro = document.querySelector('.search-pro')
+        var product = document.querySelector('.product')
+        newData(data)
+        function newData(myData){
+            tbody.innerHTML =''
+            myData.forEach(function(value){
+            var tr = document.createElement('tr')
+            tr.innerHTML='<td>'+value.id+'</td><td>'+value.pname+'</td><td>'+value.price+'</td>'
+            tbody.appendChild(tr)
+        })}
+        // 查询
+        // 根据价格查询
         search_price.addEventListener('click',function(){
             var newArr = data.filter(function(value){
                 return value.price >= start.value && value.price <= end.value
             })
-            console.log(newArr);
+            // 渲染到页面中
+            newData(newArr)
+        })
+        // 根据名字查询
+        search_pro.addEventListener('click',function(){
+            // var nameArr = data.filter(function(value){
+            //     return value.pname == product.value
+            // })
+            // 使用some可以查询数组中的唯一元素，查询到之后就不再查询 效率较高
+            var arr = [];
+            var nameArr = data.some(function(value){
+                if(value.pname == product.value){
+                    // 查找到的是一个对象,添加到外部的一个数组中
+                    arr.push(value)
+                    return true //一定要写，表示找到符合条件的元素并退出循环 filter和foreach遇到return不会终止迭代
+                }
+            })
+            newData(arr)
         })
         
 </script>

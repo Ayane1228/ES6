@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 修改函数内部的this指向 bind(),call(),apply() 
+        
+        // call() fun.call(this指向，参数) 
+        var o = {
+            name:'名字'
+        }
+        function fn(a,b){
+            console.log(this); 
+            console.log(a+b);   
+        }
+        fn() //window NaN
+        fn.call(o,1,2) //{name: "名字"} 3
+
+        //  call的主要作用可以实现继承
+        //  call调用父类的构造函数并将this修改为son的this
+        function Father(uname,age,sex){
+            this.uname = uname
+            this.age = age
+            this.sex = sex
+        }        
+        function Son(){
+            // 调用父构造函数,将孩子的this修改为Father中的this，第一个参数为修改后的this指向
+            Father.call(this,uname,age,sex)
+        }
+        var son = new Son('zxy',18,'男')
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            margin-top: 20px;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000000;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" class="inputText">
+    <button>提交</button>
+    <div></div>
+    <script>
+        // trim去除两侧的空白 会返回一个新字符串，不会去除中间的空格
+        var input = document.querySelector('.inputText')
+        var btn = document.querySelector('button')
+        var div = document.querySelector('div')
+        btn.addEventListener('click',function(){
+            var val = input.value.trim()
+            if(val=== ''){
+                alert('请输入内容')
+            }else{
+                div.innerHTML=val
+            }
+        })
+    </script>
+</body>
+</html>

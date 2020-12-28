@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // fun.apply(thisArg,[argsArray]) 
+        // 调用一个函数 thisArg:fun函数运行时指定的this值 argsArray:传递的值，必须包含在数组内
+        // 返回值就是函数的返回值
+        // apply主要应用在修改数组的this指向，比如通过apply借助数学内置对象求最大值
+        var arr = [1,12,55,13]
+        var max = Math.max.apply(Math,arr) //将arr传递给Math.max
+        console.log(max);
+    </script>
+</body>
+</html>

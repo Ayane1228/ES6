@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // this一般指向函数的调用者
+        // 普通函数 windows.fm() this指向window
+        function fm(){
+            console.log('我是普通函数');
+        }
+        fm() //fn.call()
+
+        // 对象的方法 this指向对象
+        var obj ={
+            fun:function(){
+                console.log('我是对象的方法');
+            }
+        } 
+        obj.fun()
+
+        // 构造函数 this指向构造函数创建的实例对象
+        function Star(){}
+        var ldh = new Star()
+        
+        // 绑定事件函数，this指向绑定的DOM元素，函数的调用者
+        btn.onclick = function(){} //触发事件调用
+        
+        // 定时器函数，指向window window.setTimeout(()=>{}.)
+        setTimeout(() => {
+            
+        }, timeout);
+        
+        // 立即执行函数 指向window对象
+        (function(){
+
+        })()        
+    </script>
+</body>
+</html>

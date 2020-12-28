@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Object.keys(obj) 获取对象的属性名，并放到一个数组
+        var obj = {
+            id:1,
+            name:'小米',
+            price:2121
+        }
+        
+        console.log(Object.keys(obj)); //(3) ["id", "name", "price"]
+        Object.keys(obj).forEach(function(value){
+            console.log(value);
+            /*  id
+            *   name
+            *   price
+            */
+        })
+        // Object.defineProperty(obj,prop,descriptor)定义新属性或修改属性
+        // obj:目标对象 prop：要修改的属性名字 
+        // descriptor：目标属性的特性,对象格式
+        /* 
+            {
+                value： 如果没有属性就添加，有就会修改属性，不写则默认为是原先的value值
+                writable： 是否允许修改(重写)
+                enumberable:是否运行遍历,是否可见 默认false
+                configureable:是否允许删除 false不允许删除
+            }
+        */
+        Object.defineProperty(obj,'count',{
+            number:10000//添加属性值
+        })
+        Object.defineProperty(obj,'id',{
+            price:10000//修改属性值
+        })
+        Object.defineProperty(obj,'id',{
+            writable:false //不允许修改
+        })
+        obj.id = 2
+        console.log(obj.id); //1
+        console.log(Object.keys(obj)); //没有number属性 (3) ["id", "name", "price"]
+    </script>
+</body>
+</html>

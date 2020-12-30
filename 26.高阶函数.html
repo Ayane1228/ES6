@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 高阶函数 函数可以作为参数传递或将函数作为返回值输出：函数也是一个数据类型
+        // 函数作为函数：回调函数
+        // 定义一个函数 fn()
+        // function fn(a,b,callback){
+        //     console.log(a+b);
+        //     // 如果存在callback 就执行这个回调函数
+        //     callback && callback()
+        // };
+        // // 调用fn()
+        // fn(1,2,function(){
+        //     console.log('我是回调函数执行的具体函数');
+        // })
+    // 函数作为返回值
+  //创建电影对象
+  function File(name,size,time) {
+        this.name=name;
+        this.size=size;
+        this.time=time;
+    }
+    //实例化对象
+    var file01=new File("失恋100天","250M","2018.8.5");
+    var file02=new File("前任3","200M","2018.5.1");
+    var file03=new File("分手不说再见","520M","2018.4.28");
+    var arr=[file01,file02,file03];
+    function fn(attr) {
+        return function (obj01,obj02) {
+            // 前一个的attr大于后一个，返回1
+            if (obj01[attr]>obj02[attr]){
+                return 1;
+            }
+            if (obj02[attr]==obj01[attr]){
+                return 0;
+            }else {
+                return -1;
+            }
+        }
+    }
+    var ff=fn("size");//按照电影文件的大小从小到大进行排序 size 赋值给attr
+
+    arr.sort(ff);//函数作为参数使用
+    for (var i = 0; i < arr.length; i++) {
+        console.log(arr[i].name + "====>" + arr[i].size + "===>" + arr[i].time);
+    }        
+    </script>
+</body>
+</html>

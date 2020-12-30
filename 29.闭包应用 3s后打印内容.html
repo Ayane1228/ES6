@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="nav">
+        <li>水果</li>
+        <li>茄子</li>
+        <li>苹果</li>
+    </ul>
+    <script>
+    var lis = document.querySelector('.nav').querySelectorAll('li')
+        // 3s之后打印所有li的内容
+
+        for(var i =0;i<lis.length;i++){
+            (function(i){
+                setTimeout(() => {
+                    console.log(lis[i].innerHTML);
+                }, 3000);
+            })(i)
+        }
+    </script>
+</body>
+</html>

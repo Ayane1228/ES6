@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="nav">
+        <li>水果</li>
+        <li>茄子</li>
+        <li>苹果</li>
+    </ul>
+    <script>
+    var lis = document.querySelector('.nav').querySelectorAll('li')
+        // 闭包应用：点击li 输出当前li的索引号
+        // 1.利用动态添加属性
+        // for(var i =0;i<lis.length;i++){
+        //     lis[i].index = i; //添加属性，保存li的索引值
+        //     lis[i].onclick = function(){
+        //         console.log(this.index);
+        //     }
+        // }
+
+        // 利用闭包
+        // 利用for循环创建多个立即执行函数，调用立即执行函数的时候，接受i这个参数
+        // 立即执行函数也叫做小闭包，因为立即执行函数中的任何一个函数都可以使用它的i这个变量
+        // 会有内存泄漏和创建多个立即执行函数，浪费内存空间
+        for(var i =0;i<lis.length;i++){
+            (function(i){
+                lis[i].onclick = function(){
+                    console.log(i);
+                }
+            })(i)
+        }
+    </script>
+</body>
+</html>

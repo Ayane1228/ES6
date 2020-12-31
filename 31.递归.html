@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 函数内部自己调用了自己，那就是递归函数,会发生栈溢出，递归必须加退出条件
+        // function fn(){
+        //     fn()
+        // }
+        // fn()
+        var num = 1
+        function fn(){  
+            console.log('打印5次');
+            if(num == 5){
+                return;
+            }
+            num++
+            fn()
+        }
+        fn()
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  var reg = /abc/ 只要包含abc(连在一起)就是true
+        //  var reg = /^ABC/ 只有开头为ABC才为true
+        //  var reg = /^Abc$/ 只有精确的为Abc这个字符串才为true
+        
+        // 字符类：[]表示有一系列字符可供选择，只要匹配其中一个就可以
+        var reg = /[abc]/ //只要包含a或b或c就会为true
+        console.log(reg.test('abc')); //true
+        console.log(reg.test('a')); //true
+        console.log(reg.test('b')); //true
+        console.log(reg.test('c')); //true
+        console.log(reg.test('efg')); //false
+        console.log('---------------------------');
+        var reg1 = /^[abc]$/    //三选一，只有是a,b,c，三选一
+        console.log(reg1.test('abc'));//false
+        console.log(reg1.test('a'));//true  
+        console.log(reg1.test('b'));//true
+        console.log(reg1.test('c'));//true
+        // [-] -:范围符
+        console.log('---------------------------');
+        var reg2 = /^[a-z]$/ //26个英文字母均为true，26三选一
+        console.log(reg2.test('a')); //true
+        console.log(reg2.test('A')); //false
+        console.log(reg2.test('z'));  //true
+        // 字符组合
+        console.log('---------------------------');
+        var reg3 = /^[a-zA-Z0-9-_]$/ //26个字母（大写或小写）或数字或——或_ ,多选一，只能输入一个字符
+        console.log(reg3.test('a'));//true
+        console.log(reg3.test('A'));//true
+        console.log(reg3.test('0'));//true
+        console.log(reg3.test('-'));//true
+        console.log(reg3.test('_'));//true
+        console.log(reg3.test('abc_'));//false
+        console.log('---------------------------');
+        // 如果字符类[]中加上了^，即：[^]:表示取反（不能包含）。下面正则表达式指不包含26个字母（大写或小写）或数字或——或_ 的一个字符串
+        var reg4 = /^[^a-zA-Z0-9-_]$/ 
+        console.log(reg4.test('a'));//false
+        console.log(reg4.test('A'));//false
+        console.log(reg4.test('0'));//false
+        console.log(reg4.test('-'));//false
+        console.log(reg4.test('_'));//false
+        console.log(reg4.test('abc_'));//flase
+        console.log(reg4.test('*')) //true   
+
+
+    </script>
+</body>
+</html>

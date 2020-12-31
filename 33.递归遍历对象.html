@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var data = [{
+         id:1,
+         name:'家电',
+         goods:[{
+             id:11,
+             name:'冰箱'
+         },{
+             id:12,
+             naem:'洗衣机'
+         }]   
+        },
+        {
+            id:2,
+            name:'服饰'
+        }
+    ]
+    // 输入id，输出对应的数据对象
+    // 需要2个参数 data和所查找的id
+    function search(data,id){
+        data.forEach(function(item){
+            if(id == item.id){
+                console.log(item.name);
+            }else if(item.goods && item.goods.length > 0){
+                search(item.goods,id)
+            }
+        })
+    }   
+    search(data,1)
+    search(data,11)
+    </script>
+</body>
+</html>

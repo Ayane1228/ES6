@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            font-size: 14px;
+        }
+        .right{
+            color: green;
+        }
+        .wrong{
+            color:red
+        }
+    </style>
+</head>
+<body>
+    <!-- 验证用户名，若合法就变为绿色，不合法变成红色，提示输入不规范 -->
+    <input type="text"><span>请输入用户名</span>
+<script>
+    var reg = /^[a-zA-Z0-9_-]{6,16}$/;
+    var inp = document.querySelector('input')
+    var span = document.querySelector('span')
+    inp.onblur = function(){
+        if(reg.test(this.value)){
+        span.className='right'
+        span.innerHTML = '输入正确'
+    }else{
+        span.className='wrong'
+        span.innerHTML = '输入错误'
+    }
+    }
+</script>
+</body>
+</html>

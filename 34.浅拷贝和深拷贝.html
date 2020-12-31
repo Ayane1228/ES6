@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 浅拷贝只拷贝一层，更深层次对象只拷贝引用(地址)
+        // 深拷贝拷贝多层，每一层的数据都会拷贝
+        //浅拷贝
+        var obg ={
+            id:1,
+            name:"浅拷贝",
+            msg:{
+                sex:'男'
+            }
+        }
+        var o = {}
+//         for(val in obg){
+// //             for (变量 in 对象)
+// //                 {
+// //                     在此执行代码
+// //                 }
+// // “变量”用来指定变量，指定的变量可以是数组元素，也可以是对象的属性。
+//             // val属性名 obg[val]：属性值 
+//             o[val] = obg[val]
+//         }
+//         console.log(o); // 男，此时o的sex和obg的sex指向同一个地址值，这种叫做浅拷贝
+//         // 修改obg的sex之后o的sex也会变化
+//         obg.msg.sex = '女'
+//         console.log(o);
+
+        // ES6提供了一种浅拷贝的语法糖写法Object.assign(目标对象，源对象)，这种方式不会跳过null和undefined对象
+        // Object.assign(o,obg)
+        // console.log(o);
+
+//深拷贝：重新开辟一份空间，将所有的数据放到这个新空间中
+ // 封装函数 
+ function deepCopy(newobj, oldobj) {
+            for (var k in oldobj) {
+                // 判断我们的属性值属于那种数据类型
+                // 1. 获取属性值  oldobj[k]
+                var item = oldobj[k];
+                // 2. 判断这个值是否是数组
+                if (item instanceof Array) {
+                    newobj[k] = [];
+                    deepCopy(newobj[k], item)
+                } else if (item instanceof Object) {
+                    // 3. 判断这个值是否是对象
+                    newobj[k] = {};
+                    deepCopy(newobj[k], item)
+                } else {
+                    // 4. 属于简单数据类型
+                    newobj[k] = item;
+                }
+
+            }
+        }
+        deepCopy(o, obj);
+        console.log(o);
+
+        var arr = [];
+        console.log(arr instanceof Object);
+        o.msg.age = 20;
+        console.log(obj);
+    </script>
+</body>
+</html>

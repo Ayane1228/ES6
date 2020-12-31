@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 正则表达式 的两种创建方式，创建的正则表达式不需要加 引号
+        // 调用RegExp对象的构造函数 语法：var regexp = new RegExp(/正则表达式/)
+        var reg = new RegExp(/abc/)
+        // 利用字面量创建（常见）: var regexp = /正则表达式/
+        var newreg = /efg/
+        // 检测方法test() 符合规范 true 不符合 false
+        //  语法：regexp.test(str)
+        // /abc/只要包含就为true
+        console.log(reg.test('abc'));   //true
+        console.log(newreg.test('asdsdefg')); //true
+        console.log(reg.test('abcefg'));    //true
+        
+        // 边界符：^：必须以正则表达式开头   $：必须以正则表达式结尾 ，可以实现精确匹配
+        var newReg = /^abc/
+        var newREg = /^abc$/
+        console.log(newReg.test('abc123')); //true
+        console.log(newREg.test('abc'));    //true
+        console.log(newREg.test('abc4456'));    //false
+</script>
+</body>
+</html>
